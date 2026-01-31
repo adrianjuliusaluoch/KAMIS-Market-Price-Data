@@ -1,4 +1,4 @@
-name: Export Livestock Market Prices to Google BigQuery
+name: Upload KAMIS Livestock Market Prices to Google BigQuery
 
 on:
   schedule:
