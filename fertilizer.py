@@ -101,7 +101,7 @@ bigdata.drop(columns=['grade', 'sex'], inplace=True)
 # Define Table ID
 table_id = f"data-storage-485106.fertilizer.market_prices_{table_suffix}"
 
-if now.day == 1:
+if now.day == 1 and now.hour == 0:
     try:
         prev_month_date = now.replace(day=1) - timedelta(days=1)
         prev_table_suffix = f"{prev_month_date.year}_{prev_month_date.strftime('%b').lower()}"
@@ -113,6 +113,7 @@ if now.day == 1:
             ).to_dataframe()
             bigdata = pd.concat([prev_data, bigdata], ignore_index=True)
             print(f"Appended {len(prev_data)} rows from previous month table.")
+            
         except NotFound:
             print("No previous month table found, skipping append.")
         
