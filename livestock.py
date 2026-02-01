@@ -101,7 +101,7 @@ bigdata['retail'] = pd.to_numeric(bigdata['retail'].str.extract(r'(\d+\.?\d*)')[
 # Define Table ID
 table_id = f"data-storage-485106.livestock.market_prices_{table_suffix}"
 
-if now.day == 1:
+if now.day == 1 and now.hour == 0:
     try:
         prev_month_date = now.replace(day=1) - timedelta(days=1)
         prev_table_suffix = f"{prev_month_date.year}_{prev_month_date.strftime('%b').lower()}"
